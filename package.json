@@ -1,0 +1,12 @@
+{
+  "name": "cordova-ostheme-darkmode",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-ostheme-darkmode",
+    "platforms": [
+      "android",
+      "iOS"
+    ]
+  },
+  "description": "Get information about the os theme (light / dark modes)"
+}
