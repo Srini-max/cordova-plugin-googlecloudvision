@@ -1,6 +1,6 @@
 package com.cordova.google.cloudvision;
 
-import org.apache.cordova. * ;
+import org.apache.cordova.* ;
 import org.json.JSONArray;
 
 import android.content.res.Configuration;
