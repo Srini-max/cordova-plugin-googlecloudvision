@@ -1,19 +1,14 @@
-# Cordova OSTheme DarkMode
+# Cordova Google Cloud Vision
 
 
-This plugin **only detects if dark (also called night) mode is enable or disable**.
+This plugin **Read Text from the paper/image using google Cloud Vision API**.
 
-
-### Install
-```
-cordova plugin add cordova-ostheme-darkmode
-```
 
 ### Example
 ```js
-OSTheme.darkmode(
+OSTheme.readtext(
   function(res) {
-    alert("Dark Mode Enabled :- "+res);
+    alert("Text read from API :- "+res);
   },
   function(err) {
     alert(err);
