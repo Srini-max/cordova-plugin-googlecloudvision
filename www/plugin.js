@@ -1,13 +1,13 @@
 cordova.addConstructor(function() {
-    function OSTheme() {
+    function CloudVision() {
 
     }
 
-    OSTheme.prototype.darkmode = function(  successCallback, errorCallback ){
-        cordova.exec(successCallback, errorCallback, "OSTheme", "darkmode", []);
+    CloudVision.prototype.readtext = function(successCallback,errorCallback){
+        cordova.exec(successCallback, errorCallback, "CloudVision", "CloudVision", []);
     }
 
    
-    window.OSTheme = new OSTheme()
-    return window.OSTheme
+    window.CloudVision = new CloudVision()
+    return window.CloudVision
 });

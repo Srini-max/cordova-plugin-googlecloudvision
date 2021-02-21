@@ -1,12 +1,12 @@
 {
-  "name": "cordova-ostheme-darkmode",
+  "name": "cordova-plugin-googlecloudvision",
   "version": "1.0.0",
   "cordova": {
-    "id": "cordova-ostheme-darkmode",
+    "id": "cordova-plugin-googlecloudvision",
     "platforms": [
       "android",
       "iOS"
     ]
   },
-  "description": "Get information about the os theme (light / dark modes)"
+  "description": "Read Text from the paper/image using google Cloud Vision API."
 }
