@@ -12,6 +12,7 @@
    <platform name="android">
 	       <framework src="com.google.code.gson:gson:2.8.2" />
     <framework src="com.google.api-client:google-api-client-android:1.23.0" />
+	<framework src="com.google.android.material:material:1.0.0" />
       <config-file target="res/xml/config.xml" parent="/*">
          <feature name="CloudVision">
             <param name="android-package" value="com.cordova.google.cloudvision.CloudVision" />
