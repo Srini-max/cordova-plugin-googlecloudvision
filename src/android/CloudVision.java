@@ -61,7 +61,7 @@ public class CloudVision extends CordovaPlugin {
   public static final String FILE_NAME = "temp.jpg";
   private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
   private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-
+  
   private static final String TAG =  "CloudVisionPlugin";
   private static final int GALLERY_PERMISSIONS_REQUEST = 0;
   private static final int GALLERY_IMAGE_REQUEST = 1;
@@ -75,25 +75,20 @@ public class CloudVision extends CordovaPlugin {
   public boolean execute(String action, JSONArray data, CallbackContext callbackContext) {
     if (action.equals("readtext")) {
       try {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage(R.string.dialog_select_prompt).setPositiveButton(R.string.dialog_select_gallery, new DialogInterface.OnClickListener() {@Override
-          public void onClick(DialogInterface dialog, int which) {
-            startGalleryChooser();
-          }
-        }).setNegativeButton(R.string.dialog_select_camera, new DialogInterface.OnClickListener() {@Override
-          public void onClick(DialogInterface dialog, int which) {
-            startCamera();
-          }
-        });
-        builder.create().show();
+           if(args.optString(0) == "Camera"){
+                startCamera();
+           }else{
+                startGalleryChooser();
+           }
+         
       } catch(Exception e) {
         Log.d(TAG, "Error: " + e.getMessage());
-        callbackContext.error("Error finding setting night mode: " + e.getMessage());
+        callbackContext.error("Error: " + e.getMessage());
       }
       return true;
 
     } else {
-      Log.d(TAG, "Wrong Function... nothing to verify");
+      Log.d(TAG, "Wrong Function... nothing to do with this plugin");
       return false;
     }
   }
