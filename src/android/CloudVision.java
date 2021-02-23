@@ -48,6 +48,16 @@ import com.google.api.services.vision.v1.model.WebEntity;
 import com.google.api.services.vision.v1.model.WebImage;
 import com.google.api.services.vision.v1.model.WebPage;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.support.annotation.NonNull;
+
+import com.google.common.io.BaseEncoding;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
