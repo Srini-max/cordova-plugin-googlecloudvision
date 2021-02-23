@@ -1,6 +1,6 @@
 package com.cordova.google.cloudvision;
 
-import org.apache.cordova. * ;
+import org.apache.cordova.* ;
 import org.json.JSONArray;
 
 import android.content.res.Configuration;
@@ -75,7 +75,7 @@ public class CloudVision extends CordovaPlugin {
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
 
-    Log.i(TAG, "Initializing ImageCompressor Plugin");
+    Log.i(TAG, "Initializing OCR Plugin");
   }
 
   public boolean execute(String action, CordovaArgs args, JSONArray data, CallbackContext callbackContext) {
