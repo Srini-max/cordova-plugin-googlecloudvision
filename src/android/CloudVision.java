@@ -72,10 +72,11 @@ public class CloudVision extends CordovaPlugin {
   private ImageView mMainImage;
 
   @Override
-  public boolean execute(String action, JSONArray data, CallbackContext callbackContext) {
+    public boolean execute(String action, CordovaArgs args, JSONArray data,CallbackContext callbackContext)  {
+
     if (action.equals("readtext")) {
       try {
-           if(args.optString(0) == "Camera"){
+           if( args.optString(0) == "Camera"){
                 startCamera();
            }else{
                 startGalleryChooser();
