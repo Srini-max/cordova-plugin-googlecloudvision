@@ -3,11 +3,11 @@ cordova.addConstructor(function() {
 
     }
 
-    CloudVision.prototype.readtext = function(successCallback,errorCallback){
-        cordova.exec(successCallback, errorCallback, "CloudVision", "CloudVision", []);
+    CloudVision.prototype.readtext = function(cameragallerytype,successCallback,errorCallback){
+        cordova.exec(successCallback, errorCallback, "CloudVision", "CloudVision", [cameragallerytype]);
     }
 
-   
+
     window.CloudVision = new CloudVision()
     return window.CloudVision
 });
