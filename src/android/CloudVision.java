@@ -100,14 +100,74 @@ public class CloudVision extends CordovaPlugin {
     }
   }
   public void startGalleryChooser() {
-    if (PermissionUtils.requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+    if (requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
       Intent intent = new Intent();
       intent.setType("image/*");
       intent.setAction(Intent.ACTION_GET_CONTENT);
       startActivityForResult(Intent.createChooser(intent, "Select a photo"), GALLERY_IMAGE_REQUEST);
     }
   }
+ public static String getSignature(@NonNull PackageManager pm, @NonNull String packageName) {
+        try {
+            PackageInfo packageInfo = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+            if (packageInfo == null
+                    || packageInfo.signatures == null
+                    || packageInfo.signatures.length == 0
+                    || packageInfo.signatures[0] == null) {
+                return null;
+            }
+            return signatureDigest(packageInfo.signatures[0]);
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
 
+    private static String signatureDigest(Signature sig) {
+        byte[] signature = sig.toByteArray();
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA1");
+            byte[] digest = md.digest(signature);
+            return BaseEncoding.base16().lowerCase().encode(digest);
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+    }
+   public static boolean requestPermission(
+            Activity activity, int requestCode, String... permissions) {
+        boolean granted = true;
+        ArrayList<String> permissionsNeeded = new ArrayList<>();
+
+        for (String s : permissions) {
+            int permissionCheck = ContextCompat.checkSelfPermission(activity, s);
+            boolean hasPermission = (permissionCheck == PackageManager.PERMISSION_GRANTED);
+            granted &= hasPermission;
+            if (!hasPermission) {
+                permissionsNeeded.add(s);
+            }
+        }
+
+        if (granted) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(activity,
+                    permissionsNeeded.toArray(new String[permissionsNeeded.size()]),
+                    requestCode);
+            return false;
+        }
+    }
+
+
+    public static boolean permissionGranted(
+            int requestCode, int permissionCode, int[] grantResults) {
+        if (requestCode == permissionCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
   public void startCamera() {
     if (PermissionUtils.requestPermission(this, CAMERA_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)) {
       Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
