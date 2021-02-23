@@ -56,14 +56,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class CloudVision extends CordovaPlugin {
-  String TAG = "CloudVisionPlugin";
   private static final String CLOUD_VISION_API_KEY = "AIzaSyA2bn4jglfLJza1BWj4YEVE4cYwxAgEu2U";
 
   public static final String FILE_NAME = "temp.jpg";
   private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
   private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
 
-  private static final String TAG = MainActivity.class.getSimpleName();
+  private static final String TAG =  "CloudVisionPlugin";
   private static final int GALLERY_PERMISSIONS_REQUEST = 0;
   private static final int GALLERY_IMAGE_REQUEST = 1;
   public static final int CAMERA_PERMISSIONS_REQUEST = 2;
