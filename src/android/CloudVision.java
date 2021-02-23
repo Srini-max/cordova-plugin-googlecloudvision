@@ -154,21 +154,16 @@ public class CloudVision extends CordovaPlugin {
         MediaStore.Images.Media.getBitmap(getContentResolver(), uri), 1200);
 
         callCloudVision(bitmap);
-        mMainImage.setImageBitmap(bitmap);
 
       } catch(IOException e) {
         Log.d(TAG, "Image picking failed because " + e.getMessage());
-        Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
       }
     } else {
       Log.d(TAG, "Image picker gave us a null image.");
-      Toast.makeText(this, R.string.image_picker_error, Toast.LENGTH_LONG).show();
     }
   }
 
   private void callCloudVision(final Bitmap bitmap) throws IOException {
-    // Switch text to loading
-    mImageDetails.setText(R.string.loading_message);
 
     // Do the real work in an async task, because we need to use the network anyway
     new AsyncTask < Object,
@@ -279,7 +274,6 @@ public class CloudVision extends CordovaPlugin {
       }
 
       protected void onPostExecute(String result) {
-        mImageDetails.setText(result);
       }
     }.execute();
   }
