@@ -1,6 +1,6 @@
 package com.cordova.google.cloudvision;
 
-import org.apache.cordova.* ;
+import org.apache.cordova. * ;
 import org.json.JSONArray;
 
 import android.content.res.Configuration;
@@ -61,8 +61,8 @@ public class CloudVision extends CordovaPlugin {
   public static final String FILE_NAME = "temp.jpg";
   private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
   private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
-  
-  private static final String TAG =  "CloudVisionPlugin";
+
+  private static final String TAG = "CloudVisionPlugin";
   private static final int GALLERY_PERMISSIONS_REQUEST = 0;
   private static final int GALLERY_IMAGE_REQUEST = 1;
   public static final int CAMERA_PERMISSIONS_REQUEST = 2;
@@ -72,16 +72,22 @@ public class CloudVision extends CordovaPlugin {
   private ImageView mMainImage;
 
   @Override
-    public boolean execute(String action, CordovaArgs args, JSONArray data,CallbackContext callbackContext)  {
+  public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+    super.initialize(cordova, webView);
+
+    Log.i(TAG, "Initializing ImageCompressor Plugin");
+  }
+
+  public boolean execute(String action, CordovaArgs args, JSONArray data, CallbackContext callbackContext) {
 
     if (action.equals("readtext")) {
       try {
-           if( args.optString(0) == "Camera"){
-                startCamera();
-           }else{
-                startGalleryChooser();
-           }
-         
+        if (args.optString(0) == "Camera") {
+          startCamera();
+        } else {
+          startGalleryChooser();
+        }
+
       } catch(Exception e) {
         Log.d(TAG, "Error: " + e.getMessage());
         callbackContext.error("Error: " + e.getMessage());
@@ -274,8 +280,7 @@ public class CloudVision extends CordovaPlugin {
         return "Cloud Vision API request failed. Check logs for details.";
       }
 
-      protected void onPostExecute(String result) {
-      }
+      protected void onPostExecute(String result) {}
     }.execute();
   }
 
