@@ -26,6 +26,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import android.app.PendingIntent;
+import android.app.Activity;
+import android.content.*;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
+import android.content.pm.LabeledIntent;
+import android.os.Build;
+import android.text.Html;
+import android.util.Base64;
+import android.view.Gravity;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
