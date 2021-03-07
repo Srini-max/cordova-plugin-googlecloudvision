@@ -122,12 +122,12 @@ public class CloudVision extends CordovaPlugin {
     }
   }
   public void startGalleryChooser() {
-    if (requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+   // if (requestPermission(this, GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
       Intent intent = new Intent();
       intent.setType("image/*");
       intent.setAction(Intent.ACTION_GET_CONTENT);
       startActivityForResult(Intent.createChooser(intent, "Select a photo"), GALLERY_IMAGE_REQUEST);
-    }
+ //   }
   }
  public static String getSignature(@NonNull PackageManager pm, @NonNull String packageName) {
         try {
@@ -191,13 +191,13 @@ public class CloudVision extends CordovaPlugin {
         return false;
     }
   public void startCamera() {
-    if (PermissionUtils.requestPermission(this, CAMERA_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)) {
+  //  if (PermissionUtils.requestPermission(this, CAMERA_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)) {
       Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
       Uri photoUri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", getCameraFile());
       intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
       intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
       startActivityForResult(intent, CAMERA_IMAGE_REQUEST);
-    }
+  //  }
   }
 
   public File getCameraFile() {
